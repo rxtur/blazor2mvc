@@ -43,6 +43,7 @@ namespace MvcApp
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                app.UseWebAssemblyDebugging();
             }
             else
             {
@@ -51,6 +52,7 @@ namespace MvcApp
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -64,6 +66,7 @@ namespace MvcApp
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapFallbackToFile("index.html");
             });
         }
     }
